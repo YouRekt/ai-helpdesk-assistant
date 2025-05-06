@@ -49,7 +49,7 @@ const Chat = ({
 							<div
 								key={i}
 								className={cn(
-									"p-3 rounded-lg whitespace-pre-wrap max-w-10/12",
+									"p-3 rounded-lg whitespace-pre-wrap max-w-1/2",
 									msg.role === "user"
 										? "bg-primary text-primary-foreground ml-auto"
 										: "bg-muted text-muted-foreground mr-auto"

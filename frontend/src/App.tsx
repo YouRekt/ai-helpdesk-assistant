@@ -1,4 +1,5 @@
 import Chat from "@/components/chat";
+import HelpdeskForm from "@/components/helpdesk-form";
 import InfoCard from "@/components/info-card";
 import { useState } from "react";
 
@@ -39,13 +40,16 @@ function App() {
 	return (
 		<div className="flex flex-col items-center p-4 gap-4 max-h-dvh">
 			<InfoCard />
-			<Chat
-				messages={messages}
-				input={input}
-				setInput={setInput}
-				isLoading={isLoading}
-				sendMessage={sendMessage}
-			/>
+			<div className="flex justify-center gap-4">
+				<Chat
+					messages={messages}
+					input={input}
+					setInput={setInput}
+					isLoading={isLoading}
+					sendMessage={sendMessage}
+				/>
+				<HelpdeskForm />
+			</div>
 		</div>
 	);
 }
