@@ -2,11 +2,7 @@ import Chat from "@/components/chat";
 import HelpdeskForm from "@/components/helpdesk-form";
 import InfoCard from "@/components/info-card";
 import { useState } from "react";
-
-export type Message = {
-	role: "user" | "model";
-	text: string;
-};
+import { type Message } from "@shared/schemas/message";
 
 const initialMessages: Message[] = [
 	{
