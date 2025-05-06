@@ -6,7 +6,7 @@ import {
 	CardDescription,
 	CardContent,
 } from "@/components/ui/card";
-import { type Message } from "@/App";
+import { type Message } from "@shared/schemas/message";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef } from "react";
 import { Input } from "@/components/ui/input";
