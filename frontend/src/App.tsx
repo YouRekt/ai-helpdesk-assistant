@@ -1,7 +1,11 @@
 import Chat from "@/components/chat";
 import HelpdeskForm from "@/components/helpdesk-form";
 import InfoCard from "@/components/info-card";
+import { Form } from "@/components/ui/form";
 import { useStore } from "@/hooks/use-store";
+import { formSchema, type FormValues } from "@shared/schemas/form";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 function App() {
 	const messages = useStore((state) => state.messages);
@@ -16,6 +20,17 @@ function App() {
 	const addModelMessageChunk = useStore(
 		(state) => state.addModelMessageChunk
 	);
+
+	const form = useForm<FormValues>({
+		resolver: zodResolver(formSchema),
+		defaultValues: {
+			firstName: "",
+			lastName: "",
+			email: "",
+			reason: "",
+			urgency: 1,
+		},
+	});
 
 	const sendMessage = async () => {
 		const trimmedInput = input.trim();
@@ -66,7 +81,9 @@ function App() {
 					isLoading={isLoading}
 					sendMessage={sendMessage}
 				/>
-				<HelpdeskForm />
+				<Form {...form}>
+					<HelpdeskForm />
+				</Form>
 			</div>
 		</div>
 	);
