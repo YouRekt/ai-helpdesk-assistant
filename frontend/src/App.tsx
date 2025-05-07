@@ -40,14 +40,12 @@ function App() {
 		setInput("");
 		setLoading(true);
 
-		const currentHistory = useStore.getState().history;
-
 		const res = await fetch("/api/chat", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({
 				message: { text: trimmedInput },
-				history: currentHistory,
+				history: useStore.getState().history,
 			}),
 		});
 
@@ -67,7 +65,53 @@ function App() {
 			addModelMessageChunk(decoder.decode(value, { stream: true }));
 		}
 
+		fillForm();
+
 		setLoading(false);
+	};
+
+	const fillForm = async () => {
+		const res = await fetch("/api/chat/extract", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ history: useStore.getState().history }),
+		});
+		const { data } = await res.json();
+
+		const fields = [
+			{
+				field: "firstName" as const,
+				schema: formSchema.pick({ firstName: true }),
+			},
+			{
+				field: "lastName" as const,
+				schema: formSchema.pick({ lastName: true }),
+			},
+			{
+				field: "email" as const,
+				schema: formSchema.pick({ email: true }),
+			},
+			{
+				field: "reason" as const,
+				schema: formSchema.pick({ reason: true }),
+			},
+			{
+				field: "urgency" as const,
+				schema: formSchema.pick({ urgency: true }),
+			},
+		];
+
+		for (const { field, schema } of fields) {
+			const result = schema.safeParse(data);
+			if (result.success) {
+				form.setValue(
+					field,
+					(result.data as Record<typeof field, string | number>)[
+						field
+					]
+				);
+			}
+		}
 	};
 
 	return (
