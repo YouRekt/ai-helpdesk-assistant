@@ -38,18 +38,18 @@ const Chat = ({
 			<CardHeader>
 				<CardTitle>AI Assistant Chat</CardTitle>
 				<CardDescription>
-					Here you can talk to our assistant
+					Here you can talk to our assistant.
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<ScrollArea className="h-[70dvh] relative">
+				<ScrollArea className="h-[60dvh] relative">
 					<div className="absolute top-0 left-0 right-4 h-2 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
 					<div className="flex flex-col gap-4 mr-4">
 						{messages.map((msg, i) => (
 							<div
 								key={i}
 								className={cn(
-									"p-3 rounded-lg whitespace-pre-wrap max-w-1/2",
+									"p-3 rounded-2xl whitespace-pre-wrap max-w-1/2",
 									msg.role === "user"
 										? "bg-primary text-primary-foreground ml-auto"
 										: "bg-muted text-muted-foreground mr-auto"
