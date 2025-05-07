@@ -158,7 +158,7 @@ export async function extractFormData(history: History) {
 						type: Type.STRING,
 						pattern:
 							"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$",
-						description: "Email address of the user, valida format",
+						description: "Email address of the user, valid format",
 						nullable: true,
 					},
 					reason: {
