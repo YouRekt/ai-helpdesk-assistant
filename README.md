@@ -35,7 +35,7 @@ The primary goal of this application is to provide a conversational AI that guid
 
 -   [Docker](https://www.docker.com/get-started) installed and running.
 -   [Git](https://git-scm.com/downloads) installed.
--   A Google Gemini API Key.
+-   [ A Google Gemini API Key](https://aistudio.google.com/apikey).
 
 ## Getting Started
 
@@ -87,7 +87,7 @@ docker run -d -p 3000:3000 --env-file .env ai-helpdesk-app
 If you haven't done that run:
 
 ```bash
-docker run -d -p 3000:3000 -e GEMINI_API_KEY=<your_gemini_api_key> .env ai-helpdesk-app
+docker run -d -p 3000:3000 -e GEMINI_API_KEY=<your_gemini_api_key> ai-helpdesk-app
 ```
 
 It will be run in detached mode (`-d`) and map the container's port 3000 to your local machine's port 3000 (`-p 3000:3000`).
@@ -207,5 +207,3 @@ The `shared/` directory contains Zod schemas that are used for data validation a
 -   **Form Handling (Frontend):** React Hook Form with Zod for validation.
 -   **Runtime & Build Tool:** Bun.
 -   **Containerization:** Docker.
-
----
