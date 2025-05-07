@@ -117,7 +117,7 @@ function App() {
 	return (
 		<div className="flex flex-col items-center p-4 gap-4 max-h-dvh">
 			<InfoCard />
-			<div className="flex justify-center gap-4">
+			<div className="flex flex-col lg:flex-row justify-center gap-4 pb-4">
 				<Chat
 					messages={messages}
 					input={input}
